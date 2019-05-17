@@ -16,8 +16,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class CreatePassword {
 	public static 	String pathname = "account.txt";
-	
-	
+
 	public static void main(String[] args) {
 		//创建map
 		Map<String,String> pasMap =new HashMap<String,String>();
@@ -38,8 +37,7 @@ public class CreatePassword {
 		pasMap.put("15070316365", "666666");
 		
 		//添加数据
-		try {
-			
+		try {	
 			String sha256Pass;
 			BufferedWriter  bwriter = new BufferedWriter(new FileWriter(pathname));
 			for (Map.Entry<String, String> entry : pasMap.entrySet()) { 
@@ -50,7 +48,6 @@ public class CreatePassword {
 				  bwriter.newLine();		//换行
 			}
 		
-			
 			bwriter.close();
 		} catch (IOException e) {
 		
