@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Tutorials</a>
+</nav>
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h2>
+            <span id="msg" th:text="'Hello, ' + ${message}"></span>
+        </h2>
+        <form action="/ajax" method="post">
+        	Test:<input type="submit">
+        	</form>
+        <input type="button" onclick="changeMessage()" value="change"> 
+    </div>
+
+<!-- 表单提交数据 -->    
+   
+</main>
+<!-- /.container -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<input type="button" value="获取文本" onclick="fetchText()">
+<p style="color:red" id="divDisplay"></p>
+
+<script type="text/javascript">
+
+var xhr;
+function createXMLHttpRequest() {
+    if (window.XMLHttpRequest)
+        return new XMLHttpRequest();
+    else if (window.ActiveXObject) 
+        return new ActiveXObject("Msxml2.XMLHTTP");
+    else
+        throw new Error("Ajax is not supported by your browser");   
+}
+
+	function  changeMessage(){
+		 xhr = createXMLHttpRequest();
+		var url= "/ajax";
+	
+		 xhr.open("POST",url);
+		 xhr.onreadystatechange = displayText;
+		 xhr.send(null);    
+		 
+		alert("hello...");
+	}
+	
+	function displayText(){
+	    if (xhr.readyState == 4)
+	        if (xhr.status == 200)
+	            document.getElementById("msg").innerHTML =xhr.responseText;
+	}
+
+</script>
+</body>
+</html>
