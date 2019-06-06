@@ -1,8 +1,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Checkout example · Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+<link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
 <body>
-	<h1>Welcome to our web site ...</h1>
-	<h2>Account:</h2> <h2  th:field="${user.account}"></h2>			
-	<h2>PassWord:</h2> <h2  th:field="${user.password}"></h2>	
+
+<div class="py-5 text-center">
+<h1>欢迎用户页面</h1>	
+      	<h2  th:text= "'账号：'+${user.account}"></h2>
+      	
+		<h2 th:text="'密码：'+${user.password}"></h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+
 </body>
 </html>

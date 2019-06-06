@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import webadv.s16203122.example.model.User;
+import webadv.s16203122.example.util.IsUserExit;
 
 @Controller
 public class HomeController implements WebMvcConfigurer {
@@ -21,7 +22,7 @@ public class HomeController implements WebMvcConfigurer {
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
 		//registry.addViewController("/").setViewName("login");
-      //  registry.addViewController("/home").setViewName("welcome");
+       registry.addViewController("/home").setViewName("welcome");
     }
 	
 	@RequestMapping(value="/login",method = RequestMethod.GET)
@@ -29,6 +30,7 @@ public class HomeController implements WebMvcConfigurer {
 	User user=new User(); //用于转换到form表单的对象
 	return new ModelAndView("login").addObject(user); //跳转到addCompany页面
 		}	
+	
 @PostMapping("/login")
 
 public String check(@Validated User user, BindingResult bindingResult, Model model) {
@@ -37,8 +39,33 @@ public String check(@Validated User user, BindingResult bindingResult, Model mod
 			model.addAttribute(user);
 			return "login";
 		}else {
-			
-			return "redirect:home";
+			/*获得user数据判断是否存在*/
+			boolean isexit = new IsUserExit().isUserExit(user);
+			if(isexit) {
+				return "welcome";
+			}
+			model.addAttribute("errors","用户不存在，请先注册");
+			return "login";
 		}
 	}
+
+@GetMapping("/register")
+public String register(Model model) {
+	User user =new User();
+	model.addAttribute(user);
+
+	return "register";
+}
+
+@PostMapping("/register")
+public String register (@Validated User user,BindingResult bindingResult, Model model) {
+	if (bindingResult.hasFieldErrors()) {
+		model.addAttribute(user);
+		return "register";
+	}else {
+			new IsUserExit().addUser(user);
+			model.addAttribute("user",user);
+			return "welcome";
+	}
+}
 }

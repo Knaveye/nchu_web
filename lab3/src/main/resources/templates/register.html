@@ -1,5 +1,4 @@
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -10,6 +9,7 @@
 
     <!-- Bootstrap core CSS -->
 <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
     <style>
       .bd-placeholder-img {
@@ -34,17 +34,16 @@
     <div class="container">
   <!-- 登录区域 -->
   <div  class="py-5 text-center">
-    <h2>登录页面</h2>
-    <p class="lead">你可以登录到系统，如果没有注册，可以先注册</p>
-    <p sytle="color:red" th:text="${errors}">
+    <h2>注册页面</h2>
+    <p class="lead">你可以在这个页面进行注册</p>
   </div>
-	
+
   <div class="row">
    <div class="col-3"></div>
    <div class="col-8">
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">登录页面</h4>
-      <form action="#" th:action="@{/login}" th:object="${user}" method="post" class="needs-validation">
+      <h4 class="mb-3">注册页面</h4>
+       <form action="#" th:action="@{/register}" th:object="${user}" method="post" class="needs-validation">
         <div class="mb-3">
           <label for="username">Username</label>
           <div class="input-group">
@@ -63,12 +62,13 @@
           <label for="email">password <span class="text-muted">(Optional)</span></label>
           <input type="text" th:field="*{password}" class="form-control" id="text" placeholder="password">
             	<h6 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h6>
-            <p class="change_link">New to site?
-     			<a href="/register" class="to_register"> Create Account </a>
+           
+            <p class="change_link">Have account?
+     			<a  href="/login" class="to_register"> goto login </a>
        	</p>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
       	
       </form>
     </div>

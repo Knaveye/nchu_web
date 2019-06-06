@@ -1,23 +1,97 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head></head>
-<body>
-	<form action="#" th:action="@{/login}" th:object="${user}" method="post">
-		<h1>Please Login First...</h1>
-		<table>
-			<tr>
-				<td>Account:</td>
-				<td><input type="text" th:field="*{account}" /></td>
-				<td th:if="${#fields.hasErrors('account')}" th:errors="*{account}">Account Error</td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type="text" th:field="*{password}" /></td>
-				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-			</tr>
-			<tr>
-				<td><button type="submit">Login</button></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Checkout example · Bootstrap</title>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <!-- 登录区域 -->
+  <div  class="py-5 text-center">
+    <h2>登录页面</h2>
+    <p class="lead">你可以登录到系统，如果没有注册，可以先注册</p>
+    <p sytle="color:red" th:text="${errors}">
+  </div>
+	
+  <div class="row">
+   <div class="col-3"></div>
+   <div class="col-8">
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">登录页面</h4>
+      <form action="#" th:action="@{/login}" th:object="${user}" method="post" class="needs-validation">
+        <div class="mb-3">
+          <label for="username">Username</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input type="text" class="form-control" id="username" th:field="*{account}"  placeholder="Username">
+            <br>	
+            <h6 style="color:red" th:if="${#fields.hasErrors('account')}" th:errors="*{account}">Account Error</h6>
+            
+           
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">password <span class="text-muted">(Optional)</span></label>
+          <input type="text" th:field="*{password}" class="form-control" id="text" placeholder="password">
+            	<h6 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h6>
+            <p class="change_link">New to site?
+     			<a href="/register" class="to_register"> Create Account </a>
+       	</p>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+      	
+      </form>
+    </div>
+    </div>
+
+  </div>
+
+
+
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2017-2019 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <script src="form-validation.js"></script>
+
+
+
+<div id="qb-sougou-search" style="display: none; opacity: 0;"><p>搜索</p><p class="last-btn">复制</p><iframe src=""></iframe></div></body></html>

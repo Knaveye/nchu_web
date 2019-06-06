@@ -26,7 +26,7 @@ public class LogAspect {
     //@Before("webLog()")
     @Before("execution(public * webadv.s16203122.example.controller.HomeController.check(..)) && args(user,result,..)")
     public void doBefore(User user, BindingResult result) throws Throwable {
-    	BufferedWriter bwrite = new BufferedWriter(new FileWriter("log.txt"));
+    	BufferedWriter bwrite = new BufferedWriter(new FileWriter("log.txt",true));
     	bwrite.write("Account:"+user.getAccount()+",login:"+(result.hasErrors()?"failed":"succeeded"));
     	bwrite.newLine();
     	bwrite.close();
