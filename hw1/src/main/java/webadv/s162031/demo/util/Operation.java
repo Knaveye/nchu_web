@@ -1,5 +1,7 @@
 package webadv.s162031.demo.util;
 
+import java.text.DecimalFormat;
+
 public class Operation {
 	private int m;
 	private int n;
@@ -16,8 +18,10 @@ public class Operation {
 		return m*n;
 	}
 	
-	private double divide() {
-		return m/n;
+	private String divide() {
+		DecimalFormat df = new DecimalFormat("0.00");//格式化小数  
+		String num = df.format((float)m/n);//返回的是String类型  
+		return num;
 	}
 	public int getM() {
 		return m;
@@ -39,6 +43,19 @@ public class Operation {
 	}
 	public void setOp(String op) {
 		this.op = op;
+	}
+	public String getResult() {
+		int result=0;
+		if(this.op.equals("+")) {
+			result = this.add();
+		}else if(this.op.equals("-")) {
+			result = this.sub();
+		}else if(this.op.equals("*")) {
+			result = this.avail();
+		}else {
+			return this.divide();
+		}
+		return new String().valueOf(result);
 	}
 
 }

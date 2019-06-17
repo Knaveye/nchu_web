@@ -5,6 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 th:text="${result}"></h1>
+
+总共:<h3 th:text="${right.s.size()}"></h3>
+答对:<h3 th:text="${rightnum}"></h3>
+你的答案：
+<table class="table table-striped">
+		<tbody>
+			<tr th:each="result : ${you}">
+				<td th:text="${result.s}"></td>
+			</tr>
+		</tbody>
+</table>
+正确答案：
+<table class="table table-striped">
+		<tbody>
+			<tr th:each="right : ${right}">
+		
+				<td th:text="${right.s}"></td>
+			</tr>
+		</tbody>
+</table>
+
 </body>
 </html>

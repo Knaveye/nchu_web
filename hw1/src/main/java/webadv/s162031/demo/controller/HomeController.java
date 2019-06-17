@@ -15,36 +15,43 @@ import webadv.s162031.demo.util.Result;
 
 @Controller
 public class HomeController {
-	Random random = new Random();
+	private Random random = new Random();
+	private static Result result1 = new Result();
 	@GetMapping("/")
 	public String index(Model model) {
 		String[] list = {"+","-","*","/"};  //运算符号
 	
-		int num = random.nextInt(10); //总共多少题
+		int num = random.nextInt(10)+1; //总共多少题
 		List<Operation> numlist =new ArrayList();
 		Operation operation = null;
+		List<String> reslsit =new ArrayList<>();
 		for(int i=0;i<num;i++) {
 			operation =new Operation();
 			operation.setM(random.nextInt(20));
 			operation.setN(random.nextInt(15)+1);//防止除数为0
 			operation.setOp(list[random.nextInt(4)]);
-			
-			numlist.add(operation);
-			
-			System.out.print("M:"+operation.getM()+";N:"+operation.getN()+",OP:"+operation.getClass());
+			reslsit.add(operation.getResult());
+			numlist.add(operation);	
 		}
-		 List<String> resltlist = new ArrayList<>();
-
+	
+		result1.setS(reslsit);
+				
 		model.addAttribute("numlist",numlist);
-		model.addAttribute("result",new Result());
+		model.addAttribute("re",new Result());
 		return "index";
 	}
-	@PostMapping("/result")
-	public String result(Model model,@Validated Result result) {
+	@PostMapping("/getresult")
+	public String getresult(Model model,@Validated Result result) {
+		
+		int rightnum=0;
 		for(int i=0;i<result.getS().size();i++) {
-			System.out.println("AA:"+result.getS().get(i));
+			if(result1.getS().get(i).equals(result.getS().get(i))) {
+				rightnum++;
+			}
 		}
-		model.addAttribute("result","1");
+		model.addAttribute("rightnum",rightnum);
+		model.addAttribute("right",result1);
+		model.addAttribute("you",result);
 		return "result";
 	}
 

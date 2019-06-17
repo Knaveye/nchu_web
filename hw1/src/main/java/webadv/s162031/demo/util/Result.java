@@ -11,6 +11,7 @@ public class Result {
 	}
 
 	public void setS(List<String> s) {
+	
 		this.s = s;
 	}
 	
