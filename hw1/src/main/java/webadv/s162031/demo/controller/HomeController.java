@@ -6,10 +6,12 @@ import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import webadv.s162031.demo.util.Operation;
+import webadv.s162031.demo.util.Result;
 
 @Controller
 public class HomeController {
@@ -34,11 +36,14 @@ public class HomeController {
 		 List<String> resltlist = new ArrayList<>();
 
 		model.addAttribute("numlist",numlist);
-		
+		model.addAttribute("result",new Result());
 		return "index";
 	}
 	@PostMapping("/result")
-	public String result(Model model) {
+	public String result(Model model,@Validated Result result) {
+		for(int i=0;i<result.getS().size();i++) {
+			System.out.println("AA:"+result.getS().get(i));
+		}
 		model.addAttribute("result","1");
 		return "result";
 	}
