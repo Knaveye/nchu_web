@@ -5,7 +5,7 @@
 <title>小学算术测验网站</title>
 </head>
 <body>
-<form action="@{/result}">
+<form action="@{/result}" method="post" th:object="${message}">
 	<table class="table table-striped">
 		<tbody>
 			<tr th:each="operation,status : ${numlist}">
@@ -13,12 +13,14 @@
 				<td th:text="${operation.m}"></td>
 				<td th:text="${operation.op}"></td>
 				<td th:text="${operation.n}"></td>
-				<td ><input th:text></td>
+				<td >=</td>
+				<td ><input type="text" th:field="*{account}"></td>
 			</tr>
 		</tbody>
 	</table>
 	
 	<input type="submit" value="提交"> 
 </form>
+
 </body>
 </html>

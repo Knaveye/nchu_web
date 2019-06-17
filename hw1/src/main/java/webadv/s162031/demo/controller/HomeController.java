@@ -7,6 +7,7 @@ import java.util.Random;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import webadv.s162031.demo.util.Operation;
 
@@ -30,11 +31,17 @@ public class HomeController {
 			
 			System.out.print("M:"+operation.getM()+";N:"+operation.getN()+",OP:"+operation.getClass());
 		}
-		
+		 List<String> resltlist = new ArrayList<>();
+
 		model.addAttribute("numlist",numlist);
 		
 		return "index";
 	}
-	
+	@PostMapping("/result")
+	public String result(Model model) {
+		model.addAttribute("result","1");
+		return "result";
+	}
 
 }
+
