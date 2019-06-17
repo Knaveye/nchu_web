@@ -31,7 +31,7 @@ public class HomeController {
 			System.out.print("M:"+operation.getM()+";N:"+operation.getN()+",OP:"+operation.getClass());
 		}
 		
-		model.addAttribute("list",numlist);
+		model.addAttribute("numlist",numlist);
 		
 		return "index";
 	}

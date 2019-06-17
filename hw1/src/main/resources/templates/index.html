@@ -5,14 +5,20 @@
 <title>小学算术测验网站</title>
 </head>
 <body>
+<form action="@{/result}">
+	<table class="table table-striped">
+		<tbody>
+			<tr th:each="operation,status : ${numlist}">
+				<td th:text="${status.count}"></td>
+				<td th:text="${operation.m}"></td>
+				<td th:text="${operation.op}"></td>
+				<td th:text="${operation.n}"></td>
+				<td ><input th:text></td>
+			</tr>
+		</tbody>
+	</table>
 	
-	<form action="add" method="post" th:each="task : ${list}">
-	   	<input type="text" name="a" th:value="${list.m}">+
-	   	<input type="text" name="b" th:value="${list.n}">=
-	   	<span th:text="${result}"></span>
-	
-	   	<input type="submit">
-   </form>
-	  </ul>
+	<input type="submit" value="提交"> 
+</form>
 </body>
 </html>
