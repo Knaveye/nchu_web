@@ -6,25 +6,11 @@
 </head>
 <body>
 
-总共:<h3 th:text="${right.s.size()}"></h3>
-答对:<h3 th:text="${rightnum}"></h3>
-你的答案：
-<table class="table table-striped">
-		<tbody>
-			<tr th:each="result : ${you}">
-				<td th:text="${result.s}"></td>
-			</tr>
-		</tbody>
-</table>
-正确答案：
-<table class="table table-striped">
-		<tbody>
-			<tr th:each="right : ${right}">
-		
-				<td th:text="${right.s}"></td>
-			</tr>
-		</tbody>
-</table>
+总共:<h3 >6</h3>
+答对:<h3 >1</h3>
+你的答案：	12,121,21,12,12,1
+  
+正确答案： 13,0,1,9,12,11
 
 </body>
 </html>
